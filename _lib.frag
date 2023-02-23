@@ -1,12 +1,7 @@
-vec2 pixels(vec2 st, vec2 resolution, float bits){
-    float ratio = resolution.x / resolution.y;
-    st.x = floor(st.x * (bits*ratio))/(bits*ratio);
-    st.y = floor(st.y * bits)/bits;
-    return st;
-}
-
+/*
+    REFERENCE
+*/
 // because http://lolengine.net/blog/2013/07/27/rgb-to-hsv-in-glsl is often down
-
 vec3 rgb2hsv(vec3 c)
 {
     vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -26,23 +21,40 @@ vec3 hsv2rgb(vec3 c)
 }
 
 /*
-    // color shift
-    vec3 hsv = rgb2hsv(fragColor.rgb);
-    hsv.x = fract(hsv.x + iMouse.x / iResolution.x);
-    fragColor.rgb = hsv2rgb(hsv);
+    ORIGINAL
 */
+// Pixelates a shader
+vec2 pixels(vec2 st, vec2 resolution, float bits){
+    float ratio = resolution.x / resolution.y;
+    st.x = floor(st.x * (bits*ratio))/(bits*ratio);
+    st.y = floor(st.y * bits)/bits;
+    return st;
+}
 
+// Absolute sine
 float absin(float n){
     return abs(sin(n));
 }
+
+// Absolute cosine
 float abcos(float n){
     return abs(cos(n));
 }
 
+// Normalized sine
 float normsin(float n){
     return sin(n)+1./2.;
 }
 
+// Normalized cosine
 float normcos(float n){
     return cos(n)+1./2.;
+}
+
+// Invert a vector or value
+vec3 invert(vec3 v){
+	return vec3(1,1,1) - v;
+}
+float invert(float v){
+    return 1. - v;
 }
