@@ -38,3 +38,11 @@ float absin(float n){
 float abcos(float n){
     return abs(cos(n));
 }
+
+float normsin(float n){
+    return sin(n)+1./2.;
+}
+
+float normcos(float n){
+    return cos(n)+1./2.;
+}
