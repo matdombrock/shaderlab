@@ -21,9 +21,7 @@ vec3 hsv2rgb(vec3 c)
 
 // 2D Random
 float random (in vec2 st) {
-    return fract(sin(dot(st.xy,
-                         vec2(12.9898,78.233)))
-                 * 43758.5453123);
+    return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
 }
 
 // 2D Noise based on Morgan McGuire @morgan3d
