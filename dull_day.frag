@@ -2,9 +2,9 @@
 precision mediump float;
 #endif
 
-uniform vec2 u_resolution;
-uniform vec2 u_mouse;
-uniform float u_time;
+// uniform vec2 iResolution;
+// uniform vec2 iMouse;
+// uniform float iTime;
 
 // 2D Random
 float random (in vec2 st) {
@@ -45,13 +45,13 @@ vec2 pixels(vec2 st, vec2 resolution, float bits){
 }
 
 void main() {
-    vec2 st = gl_FragCoord.xy/u_resolution.xy;
+    vec2 st = gl_FragCoord.xy/iResolution.xy;
     
-    st = pixels(st, u_resolution, 6.);
+    //st = pixels(st, iResolution, 6.);
     
     st = sin(st);
 
     // Use the noise function
-    float n = noise(st * (u_time)/8.);
+    float n = noise(st * (iTime)/8.);
     gl_FragColor = vec4(vec3(n), 1.0);
 }
