@@ -1,3 +1,6 @@
+// Author:
+// Title:
+
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -8,11 +11,8 @@ precision mediump float;
 
 // 2D Random
 float random (in vec2 st) {
-    return fract(sin(dot(st.xy,
-                         vec2(12.9898,78.233)))
-                 * 43758.5453123);
+    return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
 }
-
 // 2D Noise based on Morgan McGuire @morgan3d
 // https://www.shadertoy.com/view/4dS3Wd
 float noise (in vec2 st) {
@@ -36,22 +36,8 @@ float noise (in vec2 st) {
             (c - a)* u.y * (1.0 - u.x) +
             (d - b) * u.x * u.y;
 }
-
-vec2 pixels(vec2 st, vec2 resolution, float bits){
-    float ratio = resolution.x / resolution.y;
-    st.x = floor(st.x * (bits*ratio))/(bits*ratio);
-    st.y = floor(st.y * bits)/bits;
-    return st;
-}
-
 void main() {
     vec2 st = gl_FragCoord.xy/iResolution.xy;
-    
-    st = pixels(st, iResolution.xy, 6.);
-    
-    st = sin(st);
-
-    // Use the noise function
-    float n = noise(st * (iTime)/8.);
-    gl_FragColor = vec4(vec3(n), 1.0);
+    vec3 color = vec3(noise(st + iTime));
+    gl_FragColor = vec4(color,1.0);
 }
