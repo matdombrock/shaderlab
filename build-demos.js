@@ -1,10 +1,10 @@
 const fs = require('fs');
 const shaderDir = __dirname + '/shaders/';
 const demoDir = __dirname + '/webdemo/';
-const libDir = __dirname + '/lib/'
+const srcDir = __dirname + '/src/'
 
 const listing = fs.readdirSync(shaderDir);
-const template = fs.readFileSync(libDir + 'template.html', 'utf-8');
+const template = fs.readFileSync(srcDir + 'template.html', 'utf-8');
 let linkHTML = '';
 for (const item of listing) {
     const name = item.split('.')[0];
@@ -19,4 +19,4 @@ for (const item of listing) {
     fs.writeFileSync(demoDir + name + '.html', temp);
     console.log('wrote '+name);
 }
-fs.copyFileSync(libDir + 'glsl.js', demoDir + 'glsl.js');
+fs.copyFileSync(srcDir + 'glsl.js', demoDir + 'glsl.js');
