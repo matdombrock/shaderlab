@@ -1,0 +1,32 @@
+<!-- 
+    Based on the sample code from The Book of Shaders: https://thebookofshaders.com/04/ 
+-->
+
+<body>
+    <h1>SHADERLAB</h1>
+    {{LINK_CODE}}
+    <div id="container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js" integrity="sha512-OviGQIoFPxWNbGybQNprasilCxjtXNGCjnaZQvDeCT0lSPwJXd5TC3usI/jsWepKW9lZLZ1ob1q/Vy4MnlTt7g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script id="vertexShader" type="x-shader/x-vertex">
+        void main() {
+            gl_Position = vec4( position, 1.0 );
+        }
+    </script>
+    <script id="fragmentShader" type="x-shader/x-fragment">
+        {{SHADER_CODE}}
+    </script>
+    <script src="glsl.js"></script>
+</body>
+<style>
+    body{
+        margin:0 auto;
+        padding: 0;
+        background-color: black;
+        color:white;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    .demo-link {
+        padding:0.5rem;
+        color:white;
+    }
+</style>
