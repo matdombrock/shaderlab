@@ -2,9 +2,9 @@
 precision mediump float;
 #endif
 
-// uniform vec2 iResolution;
-// uniform vec2 iMouse;
-// uniform float iTime;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+uniform float u_time;
 
 // 2D Random
 float random (in vec2 st) {
@@ -45,9 +45,9 @@ float abcos(float n){
 }
 
 void main() {
-    vec2 st = gl_FragCoord.xy/iResolution.xy;
-	st = pixels(st, iResolution.xy, 512.);
-	float time = iTime/32.;
+    vec2 st = gl_FragCoord.xy/u_resolution.xy;
+	st = pixels(st, u_resolution.xy, 512.);
+	float time = u_time/32.;
     vec3 color = hsv2rgb(vec3(absin(st.x+time),1.,absin(st.y+time)));
     color.r = sin(color.r*256.);
     color.g = cos(color.g*256.);

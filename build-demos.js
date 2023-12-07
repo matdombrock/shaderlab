@@ -19,5 +19,4 @@ for (const item of listing) {
     fs.writeFileSync(demoDir + name + '.html', temp);
     console.log('wrote '+name);
 }
-fs.copyFileSync(libDir + 'style.css', demoDir + 'style.css');
 fs.copyFileSync(libDir + 'glsl.js', demoDir + 'glsl.js');
