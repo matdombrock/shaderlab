@@ -22,7 +22,7 @@ void main()
     vec2 z = uv;
 
     float xTime = u_time * SPEED;
-    float time = sin(xTime / 2.0) * (sin(xTime/LIMIT)*LIMIT);//-(mod(u_time/16.0, 999999.0));
+    float time = sin(xTime / 2.0) * (sin(xTime/LIMIT)*LIMIT);
     float zoom = 1.0 + time * 0.5;
     c += uv / zoom;
 

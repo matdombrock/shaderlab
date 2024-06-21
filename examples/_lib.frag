@@ -21,6 +21,7 @@ vec3 hsv2rgb(vec3 c)
 
 // 2D Random
 float random (in vec2 st) {
+    st *= vec2(u_time);
     return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
 }
 
@@ -95,4 +96,15 @@ vec3 invert(vec3 v){
 }
 float invert(float v){
     return 1. - v;
+}
+
+// Return 1 if part of a grid
+// Used for drawing grids
+bool grid(vec2 uv, float size, float thickness) {
+    vec2 m;
+    m.x = mod(uv.x, size);
+    m.y = mod(uv.y, size);
+    if (m.x < thickness) return 1;
+    if (m.y < thickness) return 1;
+    return 0;
 }

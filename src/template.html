@@ -1,12 +1,17 @@
 <!-- 
     Based on the sample code from The Book of Shaders: https://thebookofshaders.com/04/ 
 -->
-
+<!DOCTYPE html>
+<head>
+    <title>SHADER LAB</title>
+</head>
 <body>
-    <h1>SHADERLAB</h1>
-    {{LINK_CODE}}
+    <div class="overlay">
+        <h1>GLSL SHADERLAB</h1>
+        {{LINK_CODE}}
+    </div>
     <div id="container"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js" integrity="sha512-OviGQIoFPxWNbGybQNprasilCxjtXNGCjnaZQvDeCT0lSPwJXd5TC3usI/jsWepKW9lZLZ1ob1q/Vy4MnlTt7g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{THREE_CODE}}
     <script id="vertexShader" type="x-shader/x-vertex">
         void main() {
             gl_Position = vec4( position, 1.0 );
@@ -15,7 +20,9 @@
     <script id="fragmentShader" type="x-shader/x-fragment">
         {{SHADER_CODE}}
     </script>
-    <script src="glsl.js"></script>
+    <script>
+        {{GLSL_CODE}}
+    </script>
 </body>
 <style>
     body{
@@ -24,6 +31,19 @@
         background-color: black;
         color:white;
         font-family: 'Courier New', Courier, monospace;
+    }
+    .overlay {
+        position:absolute;
+        top:0;
+        left:0;
+        opacity: 0.1;
+        transition: all 0.2s;
+        padding-right: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .overlay:hover {
+        opacity: 1;
+        background-color: rgba(0,0,0,0.5);
     }
     .demo-link {
         padding:0.5rem;
